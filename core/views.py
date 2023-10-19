@@ -12,7 +12,6 @@ from django.contrib import messages
 from django.urls import reverse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
-from paypal.standard.forms import PayPalPaymentsForm
 from django.contrib.auth.decorators import login_required
 
 import calendar
@@ -316,18 +315,7 @@ def checkout_view(request):
             )
 
         host = request.get_host()
-        paypal_dict = {
-            'business': settings.PAYPAL_RECEIVER_EMAIL,
-            'amount': cart_total_amount,
-            'item_name': "Order-Item-No-" + str(order.id),
-            'invoice': "INVOICE_NO-" + str(order.id),
-            'currency_code': "USD",
-            'notify_url': 'http://{}{}'.format(host, reverse("core:paypal-ipn")),
-            'return_url': 'http://{}{}'.format(host, reverse("core:payment-completed")),
-            'cancel_url': 'http://{}{}'.format(host, reverse("core:payment-failed")),
-        }
-
-        paypal_payment_button = PayPalPaymentsForm(initial=paypal_dict)
+        
 
         # cart_total_amount = 0
         # if 'cart_data_obj' in request.session:
@@ -451,19 +439,7 @@ def add_to_wishlist(request):
     return JsonResponse(context)
 
 
-# def remove_wishlist(request):
-#     pid = request.GET['id']
-#     wishlist = wishlist_model.objects.filter(user=request.user).values()
 
-#     product = wishlist_model.objects.get(id=pid)
-#     h = product.delete()
-
-#     context = {
-#         "bool": True,
-#         "wishlist":wishlist
-#     }
-#     t = render_to_string("core/async/wishlist-list.html", context)
-#     return JsonResponse({"data": t, "w":wishlist})
 
 def remove_wishlist(request):
     pid = request.GET['id']

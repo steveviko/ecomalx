@@ -46,8 +46,7 @@ urlpatterns = [
       # Checkout  URL
     path("checkout/", checkout_view, name="checkout"),
 
-    # Paypal URL
-    path('paypal/', include('paypal.standard.ipn.urls')),
+    
 
     # Payment Successful
     path("payment-completed/", payment_completed_view, name="payment-completed"),
