@@ -8371,7 +8371,7 @@ h6.post-title {
 
 .hotline p {
     color: #3BB77E;
-    font-size: 26px;
+    /* font-size: 14px; */
     font-weight: 700;
     font-family: "Quicksand", sans-serif;
     display: block;
@@ -8380,7 +8380,7 @@ h6.post-title {
 
 .hotline p span {
     font-weight: 500;
-    font-size: 12px;
+    font-size: 10px;
     font-family: "Lato", sans-serif;
     color: #7E7E7E;
     display: block;

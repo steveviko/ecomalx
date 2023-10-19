@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Viko - Multipurpose eCommerce HTML Template</title>
+    <title>Viko - ECommerce Online Store </title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -110,7 +110,7 @@
                                 </div>
                                 <div class="font-xs">
                                     <ul>
-                                        <li class="mb-5">Vendor: <span class="text-brand">Nest</span></li>
+                                        <li class="mb-5">Vendor: <span class="text-brand">Viko</span></li>
                                         <li class="mb-5">MFG:<span class="text-brand"> Jun 4.2022</span></li>
                                     </ul>
                                 </div>
@@ -134,7 +134,7 @@
                             <ul>
                                 <li><a href="{% url 'core:about_us' %}">About Us</a></li>
                                 <li><a href="{% url 'core:dashboard' %}">My Account</a></li>
-                                <li><a href="{% url 'core:wishlist' %}">Wishlist</a></li>
+                                <!-- <li><a href="{% url 'core:wishlist' %}">Wishlist</a></li> -->
                                 <li><a href="{% url 'core:dashboard' %}">Order Tracking</a></li>
                             </ul>
                         </div>
@@ -153,7 +153,7 @@
                     <div class="col-xl-3 col-lg-4">
                         <div class="header-info header-info-right">
                             <ul>
-                                <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
+                                <li>Call Us: <strong class="text-brand"> +256772300900</strong></li>
                                 <li>
                                     <a class="language-dropdown-active" href="#">English <i class="fi-rs-angle-small-down"></i></a>
                                     <ul class="language-dropdown">
@@ -199,16 +199,13 @@
                             <form action="{% url 'core:search' %}" method="GET">
                                 <select class="select-active">
                                     <option>All Categories</option>
-                                    <option>Milks and Dairies</option>
-                                    <option>Wines & Alcohol</option>
-                                    <option>Clothing & Beauty</option>
-                                    <option>Pet Foods & Toy</option>
-                                    <option>Fast food</option>
-                                    <option>Baking material</option>
-                                    <option>Vegetables</option>
-                                    <option>Fresh Seafood</option>
-                                    <option>Noodles & Rice</option>
-                                    <option>Ice cream</option>
+                                    
+                                    {% for c in categories %}
+
+                                    <option>
+                                        <a href="{% url 'core:category-product-list' c.cid %}"> <img src="{{ c.image.url }}" alt="" />{{c.title}}</a>
+                                    </option>
+                                    {% endfor %}
                                 </select>
                                 <input type="text" placeholder="Search for items..." name="q" />
                                 <button class="material-symbols-outlined" type="submit"><span class="material-symbols-outlined">search</span></button>
@@ -239,14 +236,14 @@
                                 </div>
                                 <!-- <div class="header-action-icon-2">
                                     <a href="shop-compare.html">
-                                        <img class="svgInject" alt="Nest" src="{% static 'assets/imgs/theme/icons/icon-compare.svg' %}" />
+                                        <img class="svgInject" alt="Viko" src="{% static 'assets/imgs/theme/icons/icon-compare.svg' %}" />
                                         <span class="pro-count blue ">3</span>
                                     </a>
                                     <a href="shop-compare.html"><span class="lable ml-0">Compare</span></a>
                                 </div> -->
                                 <div class="header-action-icon-2">
                                     <a href="{% url 'core:wishlist' %}">
-                                        <img class="svgInject" alt="Nest" src="{% static 'assets/imgs/theme/icons/icon-heart.svg' %}" />
+                                        <img class="svgInject" alt="Viko" src="{% static 'assets/imgs/theme/icons/icon-heart.svg' %}" />
                                         {% if request.user.is_authenticated %}
                                         <span class="pro-count blue">{{ wishlist.count }}</span>
                                         {% else %}
@@ -257,7 +254,7 @@
                                 </div>
                                 <div class="header-action-icon-2">
                                     <a class="mini-cart-icon" href="{% url 'core:cart' %}">
-                                        <img alt="Nest" src="{% static 'assets/imgs/theme/icons/icon-cart.svg' %}" />
+                                        <img alt="Viko" src="{% static 'assets/imgs/theme/icons/icon-cart.svg' %}" />
                                         <span class="pro-count blue cart-items-count">{{ request.session.cart_data_obj|length }}</span>
                                     </a>
                                     <a href="{% url 'core:cart' %}"><span class="lable">Cart</span></a>
@@ -274,7 +271,7 @@
                                 </div>
                                 <div class="header-action-icon-2">
                                     <a href="{% url 'core:dashboard' %}">
-                                        <img class="svgInject" alt="Nest" src="{% static 'assets/imgs/theme/icons/icon-user.svg' %}" />
+                                        <img class="svgInject" alt="Viko" src="{% static 'assets/imgs/theme/icons/icon-user.svg' %}" />
                                     </a>
                                     <a href="{% url 'core:dashboard' %}"><span class="lable ml-0">Account</span></a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
@@ -395,7 +392,7 @@
                                             </li>
                                             <li class="sub-mega-menu sub-mega-menu-width-34">
                                                 <div class="menu-banner-wrap">
-                                                    <a href="shop-product-right.html"><img src="{% static 'assets/imgs/banner/banner-menu.png' %}" alt="Nest" /></a>
+                                                    <a href="shop-product-right.html"><img src="{% static 'assets/imgs/banner/banner-menu.png' %}" alt="Viko" /></a>
                                                     <div class="menu-banner-content">
                                                         <h4>Hot deals</h4>
                                                         <h3>
@@ -417,12 +414,12 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <a>Blog</a>
 
-                                    </li>
+                                    </li> -->
                                     <li>
-                                        <a href="#">Pages <i class="fi-rs-angle-down"></i></a>
+                                        <a href="#">Help <i class="fi-rs-angle-down"></i></a>
                                         <ul class="sub-menu">
                                             <li><a href="{% url 'core:about_us' %}">About Us</a></li>
                                             <li><a href="{% url 'core:contact' %}">Contact</a></li>
@@ -440,8 +437,8 @@
                         </div>
                     </div>
                     <div class="hotline d-none d-lg-flex">
-                        <img src="{% static 'assets/imgs/theme/icons/icon-headphone.svg' %}" alt="hotline" />
-                        <p>1900 - 888<span>24/7 Support Center</span></p>
+                        <a href="{% url 'core:contact' %}"> <img src="{% static 'assets/imgs/theme/icons/icon-headphone.svg' %}" alt="hotline" />
+                        <p<span>24/7 Support Center</span></p></a>
                     </div>
                     <div class="header-action-icon-2 d-block d-lg-none">
                         <div class="burger-icon burger-icon-white">
@@ -454,7 +451,7 @@
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
                                 <a href="{% url 'core:wishlist' %}">
-                                    <img alt="Nest" src="{% static 'assets/imgs/theme/icons/icon-heart.svg' %}" />
+                                    <img alt="Viko" src="{% static 'assets/imgs/theme/icons/icon-heart.svg' %}" />
                                     {% if request.user.is_authenticated %}
                                     <span class="pro-count blue">{{ wishlist.count }}</span>
                                     {% else %}
@@ -464,7 +461,7 @@
                             </div>
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="{% url 'core:cart' %}">
-                                    <img alt="Nest" src="{% static 'assets/imgs/theme/icons/icon-cart.svg' %}" />
+                                    <img alt="Viko" src="{% static 'assets/imgs/theme/icons/icon-cart.svg' %}" />
                                     <span class="pro-count white cart-items-count">{{ request.session.cart_data_obj|length }}</span>
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
@@ -697,7 +694,7 @@
                                 <h2 class="mb-20">
                                     Stay home & get your daily <br /> needs from our shop
                                 </h2>
-                                <p class="mb-45">Start You'r Daily Shopping with <span class="text-brand">Nest Mart</span></p>
+                                <p class="mb-45">Start You'r Daily Shopping with <span class="text-brand">Viko Mart</span></p>
                                 <form class="form-subcriber d-flex">
                                     <input type="email" placeholder="Your emaill address" />
                                     <button class="btn" type="submit">Subscribe</button>
@@ -865,18 +862,18 @@
                     <div class="footer-bottom"></div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6">
-                    <p class="font-sm mb-0">&copy; 2022, <strong class="text-brand">Nest</strong> - HTML Ecommerce Template <br />All rights reserved</p>
+                    <p class="font-sm mb-0">&copy; 2023, <strong class="text-brand">Viko</strong> - Ecommerce Online Store <br />All rights reserved</p>
                 </div>
-                <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
+                <!-- <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
                     <div class="hotline d-lg-inline-flex mr-30">
                         <img src="{% static 'assets/imgs/theme/icons/phone-call.svg' %}" alt="hotline" />
-                        <p>1900 - 6666<span>Working 8:00 - 22:00</span></p>
+                        <p>+256-772 63666<span>Working 8:00 - 22:00</span></p>
                     </div>
                     <div class="hotline d-lg-inline-flex">
                         <img src="{% static 'assets/imgs/theme/icons/phone-call.svg' %}" alt="hotline" />
-                        <p>1900 - 8888<span>24/7 Support Center</span></p>
+                        <p>+256-705 98488<span>24/7 Support Center</span></p>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
                     <div class="mobile-social-icon">
                         <h6>Follow Us</h6>
