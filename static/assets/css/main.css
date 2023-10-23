@@ -7267,8 +7267,8 @@ h6.post-title {
 }
 
 .logo.logo-width-1 a img {
-    width: 180px;
-    min-width: 180px;
+    width: 60px !important;
+    min-width: 60px !important;
 }
 
 .search-style-1 form {
