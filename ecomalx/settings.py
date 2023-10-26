@@ -152,9 +152,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JAZZMIN_SETTINGS = {
     'site_header': "Viko Shop",
-    'site_brand': "You make orders, we deliver",
+    'site_brand': "We deliver",
     'site_logo': "assets/imgs/theme/loading.gif",
-    'copyright': "Viko-shop.com",
+    'copyright': "Viko Ecommerce Online store",
 }
 
 LOGIN_URL = "userauths:sign-in"
